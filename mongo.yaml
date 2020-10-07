@@ -51,6 +51,6 @@ spec:
         ports:
         # the port that this service should serve on
         - port: 27017
-        targetPort: 27017
-        selector:
-        name: carts-db
+          targetPort: 27017
+          selector:
+          name: carts-db
