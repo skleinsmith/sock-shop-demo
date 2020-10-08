@@ -1,0 +1,3 @@
+name: carts
+replicas: 1
+image: weaveworksdemos/carts:0.4.8
