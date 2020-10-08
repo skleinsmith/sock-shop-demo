@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: carts
   labels:
-    name: {{.Values.name}}-deployment
+    name: {{.Values.name}}-Deployment
 spec:
   replicas: {{int .Values.replicas}}
   selector:

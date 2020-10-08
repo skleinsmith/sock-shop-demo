@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: carts-db
+  name: {{.Values.name}}
   labels:
-    name: carts-db
+    name: {{.Values.name}}
 spec:
-  replicas: 1
+  replicas: {{.Values.replicas}}
   selector:
     matchLabels:
-      name: carts-db
+      name: {{.Values.name}}
   template:
     metadata:
       labels:
-        name: carts-db
+        name: {{.Values.name}}
     spec:
       containers:
-      - name: carts-db
-        image: mongo
+      - name: {{.Values.name}}
+        image: {{.Values.image}}
         ports:
         - name: mongo
           containerPort: 27017
@@ -38,18 +38,3 @@ spec:
             medium: Memory
       nodeSelector:
         beta.kubernetes.io/os: linux
----
-    apiVersion: v1
-    kind: Service
-    metadata:
-        annotations:
-            harness.io/managed: false
-        name: carts-db
-        labels:
-    spec:
-        ports:
-        # the port that this service should serve on
-        - port: 27017
-          targetPort: 27017
-          selector:
-          name: carts-db
