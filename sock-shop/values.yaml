@@ -1,0 +1,3 @@
+Deployment:
+  namespace: sock-shop-2
+  target: EKS
