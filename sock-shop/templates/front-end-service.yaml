@@ -3,13 +3,17 @@ kind: Service
 metadata:
   name: front-end
   namespace: {{ .Values.Deployment.namespace }}
+  {{- if eq .Values.Deployment.target "AKS" }}
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: sock-frontend
+  {{- end }}
 spec:
+  {{- if eq .Values.Deployment.target "AKS" }}
+  loadBalancerIP: {{ .Values.Azure.loadBalancerIP}}
+  {{- end }}
   externalTrafficPolicy: Cluster
   ports:
-  - nodePort: 32360
-    port: 8079
-    protocol: TCP
-    targetPort: 8079
+    - port: 8079
   selector:
     name: front-end
   sessionAffinity: None

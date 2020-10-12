@@ -1,3 +1,6 @@
 Deployment:
-  namespace: sock-shop-2
+  namespace: helm-test-1
   target: EKS
+
+Azure:
+  loadBalancerIP: 192.168.1.1
