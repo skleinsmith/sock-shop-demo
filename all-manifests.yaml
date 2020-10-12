@@ -695,13 +695,13 @@ kind: Service
 metadata:
   name: front-end
   namespace: sock-shop
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: sock-frontend
 spec:
+  loadBalancerIP: 20.49.129.191
   externalTrafficPolicy: Cluster
   ports:
-  - nodePort: 32360
-    port: 8079
-    protocol: TCP
-    targetPort: 8079
+    - port: 8079
   selector:
     name: front-end
   sessionAffinity: None
